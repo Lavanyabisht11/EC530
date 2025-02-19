@@ -1,0 +1,169 @@
+DATABASE
+users = {}
+houses = {}
+floors = {}
+rooms = {}
+devices = {}
+
+DATA MODELS (CLASSES)
+•	User:
+o	user_id: str
+o	username: str
+o	email: Optional[str] = None
+
+•	House:
+o	house_id: str
+o	address: str
+o	gps_location: str
+o	size: float
+o	floors: List[str] = []
+
+•	Floor:
+o	floor_id: str
+o	house_id: str
+o	rooms: List[str] = []
+
+•	Room:
+o	room_id: str
+o	name: str
+o	floor_id: str
+o	devices: List[str] = []
+
+•	Devices:
+o	device_id: str
+o	type: str
+o	room_id: str
+
+
+
+
+CRUD Operations
+USER
+•	("/users/")
+def create_user(user: User):
+    users[user.user_id] = user
+    return {"message": "User created", "user": user}
+
+•	("/users/{user_id}")
+def read_user(user_id: str):
+    return users.get(user_id, {"error": "User not found"})
+
+•	("/users/{user_id}")
+def update_user(user_id: str, user: User):
+    users[user_id] = user
+    return {"message": "User updated", "user": user}
+
+•	("/users/{user_id}")
+def delete_user(user_id: str):
+    users.pop(user_id, None)
+    return {"message": "User deleted"}
+
+# House Endpoints
+•	("/houses/")
+def create_house(house: House):
+    houses[house.house_id] = house
+    return {"message": "House created", "house": house}
+
+•	("/houses/{house_id}")
+def read_house(house_id: str):
+    return houses.get(house_id, {"error": "House not found"})
+
+
+•	("/houses/{house_id}")
+def update_house(house_id: str, house: House):
+    houses[house_id] = house
+    return {"message": "House updated", "house": house}
+
+•	("/houses/{house_id}")
+def delete_house(house_id: str):
+    houses.pop(house_id, None)
+    return {"message": "House deleted"}
+
+# Floor Endpoints
+•	("/floors/")
+def create_floor(floor: Floor):
+    floors[floor.floor_id] = floor
+    houses[floor.house_id].floors.append(floor.floor_id)
+    return {"message": "Floor created", "floor": floor}
+
+•	("/floors/{floor_id}")
+def read_floor(floor_id: str):
+    return floors.get(floor_id, {"error": "Floor not found"})
+
+•	("/floors/{floor_id}")
+def update_floor(floor_id: str, floor: Floor):
+    floors[floor_id] = floor
+    return {"message": "Floor updated", "floor": floor}
+
+•	("/floors/{floor_id}")
+def delete_floor(floor_id: str):
+    floors.pop(floor_id, None)
+    return {"message": "Floor deleted"}
+
+
+# Room Endpoints
+•	("/rooms/")
+def create_room(room: Room):
+    rooms[room.room_id] = room
+    floors[room.floor_id].rooms.append(room.room_id)
+    return {"message": "Room created", "room": room}
+
+•	("/rooms/{room_id}")
+def read_room(room_id: str):
+    return rooms.get(room_id, {"error": "Room not found"})
+
+•	("/rooms/{room_id}")
+def update_room(room_id: str, room: Room):
+    rooms[room_id] = room
+    return {"message": "Room updated", "room": room}
+
+•	("/rooms/{room_id}")
+def delete_room(room_id: str):
+    rooms.pop(room_id, None)
+    return {"message": "Room deleted"}
+
+# Device Endpoints
+•	("/devices/")
+def create_device(device: Device):
+    devices[device.device_id] = device
+    rooms[device.room_id].devices.append(device.device_id)
+    return {"message": "Device created", "device": device}
+
+•	("/devices/{device_id}")
+def read_device(device_id: str):
+    return devices.get(device_id, {"error": "Device not found"})
+
+•	("/devices/{device_id}")
+def update_device(device_id: str, device: Device):
+    devices[device_id] = device
+    return {"message": "Device updated", "device": device}
+
+•	("/devices/{device_id}")
+def delete_device(device_id: str):
+    devices.pop(device_id, None)
+    return {"message": "Device deleted"}
+
+# Procedure-Based API Operations
+•	("/houses/{house_id}/add_floor")
+def add_floor_to_house(house_id: str, floor: Floor):
+    floors[floor.floor_id] = floor
+    houses[house_id].floors.append(floor.floor_id)
+    return {"message": "Floor added to house"}
+
+•	("/floors/{floor_id}/add_room")
+def add_room_to_floor(floor_id: str, room: Room):
+    rooms[room.room_id] = room
+    floors[floor_id].rooms.append(room.room_id)
+    return {"message": "Room added to floor"}
+
+•	("/houses/{house_id}/remove_floor/{floor_id}")
+def remove_floor_from_house(house_id: str, floor_id: str):
+    houses[house_id].floors.remove(floor_id)
+    floors.pop(floor_id, None)
+    return {"message": "Floor removed from house"}
+
+•	("/floors/{floor_id}/remove_room/{room_id}")
+def remove_room_from_floor(floor_id: str, room_id: str):
+    floors[floor_id].rooms.remove(room_id)
+    rooms.pop(room_id, None)
+    return {"message": "Room removed from floor"}
