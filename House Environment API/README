@@ -1,0 +1,68 @@
+# Smart Home Management API
+
+This repository contains a Python-based API for managing smart home data, including users, houses, floors, rooms, and devices.  The API provides CRUD (Create, Read, Update, Delete) operations for each entity, as well as additional endpoints for managing relationships between them (e.g., adding a floor to a house, removing a room from a floor).
+
+## Features
+
+* **User Management:** Create, read, update, and delete user information.
+* **House Management:** Create, read, update, and delete house information, including address, GPS location, and size.
+* **Floor Management:** Create, read, update, and delete floor information, associating floors with houses.
+* **Room Management:** Create, read, update, and delete room information, associating rooms with floors.
+* **Device Management:** Create, read, update, and delete device information, associating devices with rooms.
+* **Relationship Management:** Endpoints for adding and removing floors from houses, and rooms from floors.
+
+## Data Models
+
+The API uses the following data models (classes):
+
+* **User:** `user_id` (str), `username` (str), `email` (Optional[str])
+* **House:** `house_id` (str), `address` (str), `gps_location` (str), `size` (float), `floors` (List[str])
+* **Floor:** `floor_id` (str), `house_id` (str), `rooms` (List[str])
+* **Room:** `room_id` (str), `name` (str), `floor_id` (str), `devices` (List[str])
+* **Device:** `device_id` (str), `type` (str), `room_id` (str)
+
+## API Endpoints
+
+The API provides the following endpoints(user dependent):
+
+**Users:**
+
+* `POST /users/`: Create a new user.
+* `GET /users/{user_id}`: Read a user by ID.
+* `PUT /users/{user_id}`: Update a user by ID.
+* `DELETE /users/{user_id}`: Delete a user by ID.
+
+**Houses:**
+
+* `POST /houses/`: Create a new house.
+* `GET /houses/{house_id}`: Read a house by ID.
+* `PUT /houses/{house_id}`: Update a house by ID.
+* `DELETE /houses/{house_id}`: Delete a house by ID.
+
+**Floors:**
+
+* `POST /floors/`: Create a new floor.
+* `GET /floors/{floor_id}`: Read a floor by ID.
+* `PUT /floors/{floor_id}`: Update a floor by ID.
+* `DELETE /floors/{floor_id}`: Delete a floor by ID.
+
+**Rooms:**
+
+* `POST /rooms/`: Create a new room.
+* `GET /rooms/{room_id}`: Read a room by ID.
+* `PUT /rooms/{room_id}`: Update a room by ID.
+* `DELETE /rooms/{room_id}`: Delete a room by ID.
+
+**Devices:**
+
+* `POST /devices/`: Create a new device.
+* `GET /devices/{device_id}`: Read a device by ID.
+* `PUT /devices/{device_id}`: Update a device by ID.
+* `DELETE /devices/{device_id}`: Delete a device by ID.
+
+**Relationship Management:**
+
+* `POST /houses/{house_id}/add_floor`: Add a floor to a house.
+* `POST /floors/{floor_id}/add_room`: Add a room to a floor.
+* `DELETE /houses/{house_id}/remove_floor/{floor_id}`: Remove a floor from a house.
+* `DELETE /floors/{floor_id}/remove_room/{room_id}`: Remove a room from a floor.
