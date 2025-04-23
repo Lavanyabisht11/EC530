@@ -1,0 +1,58 @@
+#  P2P FastF1 – Analysis of Driving and Other Attributes Among Friends
+
+This project explores Formula 1 racing data using the [FastF1 API](https://github.com/theOehrly/Fast-F1) in a **peer-to-peer** environment. The goal is to fetch race telemetry, analyze performance metrics (like lap times, top speed, tire strategy), and share them with friends over a P2P network for collaborative comparison.
+
+---
+
+## Features
+
+- ✅ Fetch race and driver data from the FastF1 API
+- ✅ Extract lap times, sector data, and strategy insights
+- ✅ Store and retrieve data using MongoDB or SQLite
+- ✅ Peer-to-peer data sharing using sockets or REST API
+- ✅ Compare driving stats among friends
+- ✅ Optional: Visualize stats using matplotlib or plotly
+
+---
+
+## Project Overview
+
+This project simulates a friendly leaderboard where users compare driving attributes from real F1 sessions. The application uses modular scripts to:
+- Fetch and preprocess FastF1 data
+- Store it in a local database
+- Share it with other users (peers)
+- Analyze and visualize performance
+
+---
+
+## Project Structure 
+Scripts to fetch and process F1 data
+Database layer for CRUD ops
+P2P Sharing via sockets or REST APIs
+Comparison and plotting modules
+entry point to run the pipeline
+requirements.txt
+README
+
+#Concepts Used
+Python 3
+
+FastF1 API
+
+MongoDB / SQLite
+
+Socket Programming
+
+Data Visualization
+
+#ROADMAP
+ Implement FastF1 data fetcher
+
+ Set up MongoDB/SQLite integration
+
+ Build peer server for P2P exchange
+
+ Create comparison and visualization tools
+
+ Tie it all together with main.py
+
