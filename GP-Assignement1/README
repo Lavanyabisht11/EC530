@@ -1,9 +1,17 @@
-# GPS Matcher
 
-A simple Python module to match each GPS coordinate in one array to its closest counterpart in another array using the Haversine formula.
 
-## Usage
+**GPS Matcher** is a Python module that helps developers match each GPS coordinate from one list to the closest location in another list using the Haversine formula. It's ideal for geospatial applications like delivery matching, friend-finder apps, or clustering nearby points.
 
-```python
-from geo_matcher import match_closest_points
-results = match_closest_points(source_list, target_list)
+---
+
+
+- Calculates accurate great-circle distances using the Haversine formula
+- Matches each point in a `source` array to the nearest point in a `target` array
+- Easy-to-use function with clear input and output formats
+- Built for developers — clean and modular Python code
+
+---
+
+
+```bash
+pip install -r requirements.txt
