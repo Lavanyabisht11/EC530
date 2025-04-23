@@ -1,0 +1,9 @@
+# GPS Matcher
+
+A simple Python module to match each GPS coordinate in one array to its closest counterpart in another array using the Haversine formula.
+
+## Usage
+
+```python
+from geo_matcher import match_closest_points
+results = match_closest_points(source_list, target_list)
