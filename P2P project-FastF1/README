@@ -6,16 +6,16 @@ This project explores Formula 1 racing data using the [FastF1 API](https://githu
 
 ## Features
 
-- ✅ Fetch race and driver data from the FastF1 API
-- ✅ Extract lap times, sector data, and strategy insights
-- ✅ Store and retrieve data using MongoDB or SQLite
-- ✅ Peer-to-peer data sharing using sockets or REST API
-- ✅ Compare driving stats among friends
-- ✅ Optional: Visualize stats using matplotlib or plotly
+- Fetch race and driver data from the FastF1 API
+- Extract lap times, sector data, and strategy insights
+- Store and retrieve data using MongoDB or SQLite
+- Peer-to-peer data sharing using sockets or REST API
+- Compare driving stats among friends
+- Optional: Visualize stats using matplotlib or plotly
 
 ---
 
-## Project Overview
+#Project Overview
 
 This project simulates a friendly leaderboard where users compare driving attributes from real F1 sessions. The application uses modular scripts to:
 - Fetch and preprocess FastF1 data
@@ -39,7 +39,7 @@ Python 3
 
 FastF1 API
 
-MongoDB / SQLite
+MongoDB 
 
 Socket Programming
 
