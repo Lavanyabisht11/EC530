@@ -56,3 +56,12 @@ Data Visualization
 
  Tie it all together with main.py
 
+---
+
+## Acknowledgements
+
+- This project uses the [FastF1 API](https://github.com/theOehrly/Fast-F1).
+  It's an amazing tool for accessing real F1 telemetry and race data.
+- MongoDB is used for local lap data storage and peer-to-peer exchange.
+- Special thanks to the open-source community
+
